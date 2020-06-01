@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getTableData } from '../Services';
+import { getTableData } from '../../Services';
 
 const Table = ({ textDisbaled }) => {
   const [delimiter, setDelimitr] = useState('');

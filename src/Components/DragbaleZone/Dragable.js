@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { updateFileInNode } from '../Services';
+import { updateFileInNode } from '../../Services';
 import FormData from 'form-data';
 
 function MyDropzone({ setTextDisbaled }) {
@@ -16,16 +16,18 @@ function MyDropzone({ setTextDisbaled }) {
     var fData = new FormData();
     fData.append('file', uploadFile[0]);
     const response = await updateFileInNode(fData);
-    if (response.uploadComplete) {
+    if (response && response.uploadComplete) {
       setTextDisbaled(false);
       alert('Upload Succesful! Proceed with data fetching.');
+    } else {
+      alert('something went wrong in file upload!');
     }
   };
 
   return (
     <>
       <div
-        className='ui center aligned container'
+        className='ui center aligned container dropZone'
         {...getRootProps()}
         style={{
           height: '100px',
