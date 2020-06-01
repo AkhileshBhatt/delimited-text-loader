@@ -1,24 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Table from './Components/Table/Table';
+import MyDropzone from './Components/DragbaleZone/Dragable';
 
 function App() {
+  const [textDisbaled, setTextDisbaled] = useState(true);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className='App'>
+      <header className='App-header'>
+        Render Dynamic Table on the basis of given 'Delimiter'
+        <p>Please upload a specific delimited file first!!! </p>
       </header>
+      <MyDropzone setTextDisbaled={setTextDisbaled} />
+      <hr />
+      <Table textDisbaled={textDisbaled} />
     </div>
   );
 }
